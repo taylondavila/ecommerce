@@ -14,13 +14,13 @@ class Page {
 
 	public function __construct($opts = array()){
 
-		$this->options = $array_merge($this->defaults, $opts);
+		$this->options = array_merge($this->defaults, $opts);
 
 		$config = array(
 			"tpl_dir"       => $_SERVER["DOCUMENT_ROOT"] . "/views/",
 			"cache_dir"     => $_SERVER["DOCUMENT_ROOT"] . "/views-cache/",
 			"debug"         => false
-			);
+		);
 
 		Tpl::configure( $config );
 
@@ -44,20 +44,18 @@ class Page {
 
 		$this->setData($data);
 
-		return $this->draw($name, $returnHTML);
+		return $this->tpl->draw($name, $returnHTML);
 
 	}
 
 	public function __destruct(){
 
-		$this->tpl->draw->tpl("footer");
+		$this->tpl->draw("footer");
 
 
 	}
 
 }
-
-
 
 
  ?>
